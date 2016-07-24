@@ -1,0 +1,14 @@
+{
+  "development": {
+    "api": {
+      "host": "http://0.0.0.0",
+      "port": "4000"
+    }
+  },
+  "production": {
+    "api": {
+      "host": "sone-website",
+      "port": ""
+    }
+  }
+}

@@ -10,11 +10,11 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
     bundle: [
-      './src/ts/main.ts'
+      './front-end/typescript/main.ts'
     ],
     vendor: [
-      './src/ts/polyfills.browser.ts',
-      './src/ts/vendor.ts'
+      './front-end/typescript/polyfills.browser.ts',
+      './front-end/typescript/vendor.ts'
     ]
   },
 
@@ -26,9 +26,9 @@ module.exports = {
   resolve: {
     extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html'],
     modulesDirectories: ['node_modules'],
-    root: path.resolve('./src'),
+    root: path.resolve('./front-end'),
     alias: {
-      'app': 'src/ts/app',
+      'app': 'front-end/typescript/',
       'angular2': path.join(__dirname, 'node_modules', '@angularclass', 'angular2-beta-to-rc-alias', 'dist', 'beta-17')
     }
   },

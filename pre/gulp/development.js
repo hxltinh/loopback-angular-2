@@ -13,10 +13,14 @@ module.exports = gulp => {
 
     wbSeverIns.listen(devConf.envConfig.api.port, 'localhost', (err) => {
       if (err) { throw new gutil.PluginError('webpack-dev-server', err); }
-      // Server listening
-      console.log(chalk.green.bgMagenta.bold('[webpack-dev-server]', `http://localhost:${devConf.envConfig.api.port}`));
+
+      console.log(chalk.green.bgMagenta.bold(
+        '[webpack-dev-server]',
+        `http://localhost:${devConf.envConfig.api.port}`
+      ));
     });
     return cb();
+
   });
 
 };

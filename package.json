@@ -5,7 +5,11 @@
   "scripts": {
     "start": "node .",
     "pretest": "eslint .",
-    "posttest": "nsp check"
+    "posttest": "nsp check",
+    "dev": "NODE_ENV=development gulp dev",
+    "prod": "NODE_ENV=production gulp production",
+    "staging": "NODE_ENV=production gulp staging",
+    "qc": "NODE_ENV=production gulp qc"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.4",
@@ -45,6 +49,7 @@
     "babel-loader": "^6.2.4",
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
+    "chalk": "^1.1.3",
     "css-loader": "^0.23.1",
     "del": "^2.2.0",
     "eslint": "^2.13.1",

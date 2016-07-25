@@ -9,17 +9,9 @@ const webpackProd = require('./pre/webpack/production');
 
 const WebpackDevServer = require('webpack-dev-server');
 
-gulp.task('dev', (cb) => {
-  const devConf = webpackDev();
-  const compiler = webpack(devConf.config);
-  const wbSeverIns = new WebpackDevServer(compiler, devConf.devServerConfig);
-  wbSeverIns.listen(devConf.envConfig.api.port, 'localhost', (err) => {
-    if (err) { throw new gutil.PluginError('webpack-dev-server', err); }
-    // Server listening
-    gutil.log('[webpack-dev-server]', `http://localhost:${devConf.envConfig.api.port}`);
-  });
-  return cb();
-});
+const devTasks = require('./pre/gulp/development');
+
+devTasks(gulp);
 
 gulp.task('copy-lib', done => {
   gulp.src(['src/lib/**/*']).pipe(gulp.dest('client/app/lib'));

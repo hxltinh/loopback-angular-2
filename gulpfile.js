@@ -6,12 +6,15 @@ const gutil = require('gulp-util');
 const webpack = require('webpack');
 const webpackDev = require('./pre/webpack/development');
 const webpackProd = require('./pre/webpack/production');
+const shell = require('gulp-shell');
 
 const WebpackDevServer = require('webpack-dev-server');
 
 const devTasks = require('./pre/gulp/development');
 
-devTasks(gulp);
+devTasks(gulp, () => {
+  shell.task(['node . --color'])();
+});
 
 gulp.task('copy-lib', done => {
   gulp.src(['src/lib/**/*']).pipe(gulp.dest('client/app/lib'));

@@ -1,4 +1,4 @@
-import { provideRouter, RouterConfig } from "@angular/router";
+import { RouterConfig } from "@angular/router";
 import DashboardComponent from "../containers/DashBoard";
 
 const routes: RouterConfig = [
@@ -13,4 +13,4 @@ const routes: RouterConfig = [
   }
 ];
 
-export default [ provideRouter(routes) ];
+export default routes;

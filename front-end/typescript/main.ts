@@ -5,3 +5,5 @@ import MainApp from "./containers/main.app";
 import Routes from "./routes";
 
 bootstrap(MainApp, [ Routes ]);
+
+// Header Auth Key: Authorization

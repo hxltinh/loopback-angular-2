@@ -5,7 +5,7 @@ const chalk = require('chalk');
 const webpackDev = require('../webpack/development');
 
 module.exports = (gulp, devCb) => {
-  gulp.task('dev', (cb) => {
+  gulp.task('dev', cb => {
 
     const devConf = webpackDev();
     const compiler = webpack(devConf.config);

@@ -26,9 +26,9 @@ module.exports = {
   resolve: {
     extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html'],
     modulesDirectories: ['node_modules'],
-    root: path.resolve('./front-end'),
+    root: path.resolve('./front-end/typescript/'),
     alias: {
-      'app': 'front-end/typescript/',
+      // 'app': 'front-end/typescript/',
       'angular2': path.join(__dirname, 'node_modules', '@angularclass', 'angular2-beta-to-rc-alias', 'dist', 'beta-17')
     }
   },

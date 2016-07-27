@@ -37,6 +37,7 @@ module.exports = () => {
 
   const devServerConfig = {
     noInfo: true,
+    hot: true,
     contentBase: './front-end',
     publicPath: config.output.publicPath,
     host: envConfig.api.host,

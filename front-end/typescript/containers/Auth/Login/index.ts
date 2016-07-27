@@ -2,6 +2,6 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: "login",
-  template: "<div> this is login page</div>"
+  template: require("./template.tpl")
 })
 export default class Login {}

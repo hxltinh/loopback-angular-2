@@ -36,7 +36,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: [/\.(spec|e2e)\.ts$/] },
-      { test: /\.html$/, loader: 'raw' },
+      { test: /\.(html|tpl)$/, loader: 'raw' },
       { test: /.(gif|jpg|png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader' },
       // { test: /\.tpl$/, loader: 'html' }
     ]

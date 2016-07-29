@@ -5,7 +5,6 @@ import AuthService from "services/auth.service";
 import LoginInterface from "interface/login.intf";
 
 @Component({
-  selector: "login",
   template: require("./template.tpl")
 })
 export default class Login {
@@ -17,6 +16,9 @@ export default class Login {
   };
 
   onSubmit(loginForm) {
-    this.authServ.login();
+    const { username, password } = this.login;
+    this.authServ.login({ username, password }).subscribe(res => {
+      console.debug("response:", res);
+    });
   }
 }

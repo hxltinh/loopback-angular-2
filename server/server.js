@@ -1,8 +1,12 @@
 const loopback = require('loopback');
 const boot = require('loopback-boot');
 const chalk = require('chalk');
+var bodyParser = require('body-parser');
 
 const app = module.exports = loopback();
+
+// app.use(bodyParser.urlencoded({ extended : true }));
+app.use(bodyParser.json());
 
 app.start = function() {
 

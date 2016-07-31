@@ -4,27 +4,20 @@
  *
  * @return: instance of Auth class
  */
-'use strict';
-
 class Auth {
+  constructor(app) {
+    this.app = app;
+  }
   login(email, password, ttl) {
-    const User = server.models.user;
-
-    User.login({
-      email,
-      password,
-      ttl
-    }, 'user', (err, token) => {
-      if (err) {
-        return res.status(401).json({'error': 'login fail'});
-      }
-      return res.json({
-        userId: token.userId,
-        email,
-        'token': token.id
-      });
+    const User = this.app.models.user;
+    return new Promise((resolve, reject) => {
+      User.login({email, password, ttl},
+        'user', (err, token) => {
+          if (err) { return reject(err); }
+          return resolve(token);
+        });
     });
   }
 }
 
-module.exports = new Auth();
+module.exports = Auth;

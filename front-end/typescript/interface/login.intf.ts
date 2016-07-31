@@ -1,4 +1,4 @@
 export default class LoginInterface {
-  username: string;
+  email: string;
   password: string;
 }

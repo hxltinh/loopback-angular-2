@@ -11,14 +11,15 @@ export default class Login {
 
   constructor(private authServ: AuthService) {}
   login: LoginInterface = {
-    username: "",
+    email: "",
     password: ""
   };
 
   onSubmit(loginForm) {
-    const { username, password } = this.login;
-    this.authServ.login({ username, password }).subscribe(res => {
+    const { email, password } = this.login;
+    this.authServ.login({ email, password }).subscribe(res => {
       console.debug("response:", res);
+      console.debug("response data:", res.json());
     });
   }
 }

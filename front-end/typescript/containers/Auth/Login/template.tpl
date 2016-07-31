@@ -1,11 +1,11 @@
 <div>
   <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
     <div>
-      <label>Username</label>
-      <input type="text" id="username" name="username" #username="ngModel"
-        [(ngModel)]="login.username" placeholder="username" required />
-      <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
-        username is required
+      <label>email</label>
+      <input type="text" id="email" name="email" #email="ngModel"
+        [(ngModel)]="login.email" placeholder="email" required />
+      <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+        email is required
       </div>
     </div>
     <div>

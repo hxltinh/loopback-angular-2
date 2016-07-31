@@ -1,3 +1,9 @@
+/*
+ * @Service: dump data
+ * handle dump data actions
+ *
+ * @return: object of DumpData class 
+ */
 'use strict';
 
 class DumpData {
@@ -26,6 +32,24 @@ class DumpData {
         if (err) { return reject(err); }
 
         resolve(user);
+      });
+    });
+  }
+
+  createRole(name, principalId) {
+    const Role = this.app.models.Role;
+    const RoleMapping = this.app.models.RoleMapping;
+
+    return new Promise((resolve, reject) => {
+      Role.create({ name }, (err, role) => {
+        if(err) { return reject(err); }
+
+        role.principals.create(
+          { principalType: RoleMapping.USER, principalId },
+          ( err, principal) => {
+          if( err ) { return reject(err); }
+          return resolve(principal);
+        });
       });
     });
   }

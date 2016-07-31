@@ -1,13 +1,14 @@
 "use strict";
+const authConfig = require('../config/auth');
 
 module.exports = server => {
-  var router = server.loopback.Router();
-  router.post('/api/login',(req, res) => {
-          const { username, password } = req.body;
 
-          console.log("username:", username);
-          console.log("password:", password);
-          res.json({ success: 1 });
-        });
+  var router = server.loopback.Router();
+  router
+    .post('/api/login',(req, res) => {
+      const { username, password } = req.body;
+      
+    });
   server.use(router);
+
 }

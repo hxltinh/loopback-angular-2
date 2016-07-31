@@ -5,41 +5,24 @@ const DumpData = require('../services/dump-data');
 module.exports = app => {
   const dumpDataServ = new DumpData(app, config);
 
+  console.log('==== start checking admin is created or not ====');
   dumpDataServ.findAdmin()
     .then(res => {
-      if (res) { return false; }
+      if (res) {
+        console.log('==== already have admin ====');
+        return false;
+      }
       return dumpDataServ.createAdmin();
     })
-    .then(res => {
-      if (res) {
-        console.log(res);
+    .then(admin => {
+      if (!admin) { return false; }
+      return dumpDataServ.createRole('admin', admin.id);
+    })
+    .then(principal => {
+      if(!principal) {
+        return console.log('==== admin is NOT created ====');
       }
+      return console.log('==== admin is created ====');
     });
 
-  // const User = app.models.user;
-  //
-  // const Role = app.models.Role;
-  // const RoleMapping = app.models.RoleMapping;
-  //
-  // const defaultUser = {
-  //   'email': 'admin@blog.com',
-  //   'password': '123456',
-  //   'emailVerified': true,
-  //   'sex': 'male',
-  //   'quote': 'I am superman'
-  // };
-  //
-  // findAdmin(defaultUser.email)
-  //   .then(user => {
-  //     console.log('user:', user);
-  //   });
-  //
-  // function findAdmin(email) {
-  //   return new Promise((resolve, reject) => {
-  //     User.findOne({ where: { email }}, (err, user) => {
-  //       if (err) { return reject(err); }
-  //       return resolve(user);
-  //     });
-  //   });
-  // }
 };

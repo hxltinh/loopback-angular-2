@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
 import AuthService from "services/auth.service";
 
 import LoginInterface from "interface/login.intf";
@@ -9,7 +10,7 @@ import LoginInterface from "interface/login.intf";
 })
 export default class Login {
 
-  constructor(private authServ: AuthService) {}
+  constructor(private authServ: AuthService, private router: Router) {}
   login: LoginInterface = {
     email: "",
     password: ""
@@ -20,6 +21,7 @@ export default class Login {
     this.authServ.login({ email, password }).subscribe(res => {
       console.debug("response:", res);
       console.debug("response data:", res.json());
+      this.authServ.loginSuccessAction(res.json());
     });
   }
 }

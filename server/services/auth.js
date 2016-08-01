@@ -11,8 +11,10 @@ class Auth {
   login(email, password, ttl) {
     const User = this.app.models.user;
     return new Promise((resolve, reject) => {
-      User.login({email, password, ttl},
-        'user', (err, token) => {
+      User.login({email, password, ttl}, 'user',
+        (err, token) => {
+          console.log('err:', err);
+          console.log('token:', token);
           if (err) { return reject(err); }
           return resolve(token);
         });

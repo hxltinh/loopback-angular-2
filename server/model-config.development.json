@@ -14,26 +14,26 @@
     ]
   },
   "User": {
-    "dataSource": "mongodb"
+    "dataSource": "postgres"
   },
   "AccessToken": {
-    "dataSource": "mongodb",
+    "dataSource": "postgres",
     "public": false
   },
   "ACL": {
-    "dataSource": "mongodb",
+    "dataSource": "postgres",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "mongodb",
+    "dataSource": "postgres",
     "public": false
   },
   "Role": {
-    "dataSource": "mongodb",
+    "dataSource": "postgres",
     "public": false
   },
   "user": {
-    "dataSource": "mongodb",
+    "dataSource": "postgres",
     "public": true
   }
 }

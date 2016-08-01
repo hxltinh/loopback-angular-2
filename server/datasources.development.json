@@ -3,13 +3,14 @@
     "name": "db",
     "connector": "memory"
   },
-  "mongodb": {
-    "name": "mongodb_dev",
-    "connector": "mongodb",
+  "postgres": {
     "host": "localhost",
-    "database": "dev",
-    "username": "",
-    "password": "",
-    "port": 27017
+    "port": 5432,
+    "url": "",
+    "database": "luffydb",
+    "password": "superman",
+    "name": "postgres",
+    "user": "luffy",
+    "connector": "postgresql"
   }
 }

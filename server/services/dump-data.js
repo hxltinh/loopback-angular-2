@@ -17,6 +17,7 @@ class DumpData {
     return new Promise((resolve, reject) => {
       User.findOne({where: {email}}, (err, user) => {
         if (err) { return reject(err); }
+
         return resolve(user);
       });
     });
@@ -41,11 +42,12 @@ class DumpData {
     return new Promise((resolve, reject) => {
       Role.create({name}, (err, role) => {
         if (err) { return reject(err); }
-
+        console.log('role:', role);
         role.principals.create(
           {principalType: RoleMapping.USER, principalId},
           (err, principal) => {
             if (err) { return reject(err); }
+
             return resolve(principal);
           });
       });

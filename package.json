@@ -38,6 +38,7 @@
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^2.4.0",
     "loopback-connector-mongodb": "^1.15.2",
+    "loopback-connector-postgresql": "^2.6.3",
     "reflect-metadata": "*",
     "rxjs": "5.0.0-beta.6",
     "serve-favicon": "^2.0.1",

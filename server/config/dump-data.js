@@ -1,9 +1,7 @@
 module.exports = {
   defaultUser: {
-    email: 'admin@blog.com',
+    email: 'admin@app.com',
     password: '123456',
-    'emailVerified': true,
-    'sex': 'male',
-    'quote': 'I am superman'
-  }
+    emailVerified: true,
+  },
 };

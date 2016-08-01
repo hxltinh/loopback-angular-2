@@ -1,0 +1,36 @@
+{
+  "name": "user",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "email": {
+      "type": "string",
+      "required": true,
+      "default": "abc@def.com"
+    },
+    "password": {
+      "type": "string",
+      "required": true,
+      "default": "password"
+    },
+    "dob": {
+      "type": "date",
+      "default": null
+    },
+    "createdDate": {
+      "type": "date",
+      "default": null
+    },
+    "updatedDate": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -23,11 +23,13 @@ $ typings install
 
 ## commands
 - $ npm run dev: development mode
-- $ npm run prod: production mode
+- $ npm run prod: build front end at production mode
 - $ node bin/automigrate.js: dump data
+- $ npm run server:prod: runser at production
 
 ## Note for developer
 ```
+Read datasource (server/datasource.development.js) for postgres configuration
 run dump data before develop
 write more dump data in order to maintain develop velocity
 use eslint and tslint for clean code.

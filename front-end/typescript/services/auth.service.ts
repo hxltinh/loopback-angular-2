@@ -1,22 +1,27 @@
 import { Injectable } from "@angular/core";
-import { Http, Headers } from "@angular/http";
+import { Http, Headers, Response } from "@angular/http";
 import { Router } from "@angular/router";
+import BaseAjaxRequest from "./base/base.ajax.request";
+import { Observable } from "rxjs/Observable";
 
-import 'rxjs/add/operator/toPromise';
+import LoginInterface from "../interface/login.intf";
+
+import "rxjs/add/operator/toPromise";
 
 @Injectable()
-export default class AuthService {
+export default class AuthService extends BaseAjaxRequest{
 
-  private url = "api/login";
+  protected apiUrl = "api/login";
 
-  constructor(private http: Http, private router: Router) {}
+  constructor(private http: Http, private router: Router) {
+    super();
+  }
 
-  login(auth) {
+  login(auth): Observable<Response> {
     let headers = new Headers({
-    'Content-Type': 'application/json'});
-
+    "Content-Type": "application/json"});
     return this.http
-               .post(this.url, JSON.stringify(auth), {headers: headers})
+               .post(this.getUrl(), JSON.stringify(auth), {headers: headers});
   }
 
   loginSuccessAction(authInfo) {

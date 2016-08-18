@@ -1,3 +1,7 @@
+/*
+ * @DataMigrate
+ * migrate all data for development here
+ */
 const path = require('path');
 const config = require('../server/config/dump-data');
 const DumpData = require('../server/services/dump-data');

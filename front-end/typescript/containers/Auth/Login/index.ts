@@ -1,3 +1,7 @@
+/*
+ * @Container: Login Container
+ * Handle Login view
+ */
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -6,6 +10,7 @@ import AuthService from "services/auth.service";
 import LoginInterface from "interface/login.intf";
 
 @Component({
+  selector: "login",
   template: require("./template.tpl")
 })
 export default class Login {

@@ -8,6 +8,7 @@
     "posttest": "nsp check",
     "dev": "NODE_ENV=development gulp dev",
     "prod": "NODE_ENV=production gulp production",
+    "server:prod": "NODE_ENV=production node . --color",
     "staging": "NODE_ENV=production gulp staging",
     "qc": "NODE_ENV=production gulp qc"
   },
@@ -29,7 +30,6 @@
     "core-js": "^2.4.0",
     "cors": "^2.5.2",
     "es6-shim": "^0.35.1",
-    "foundation": "^4.2.1-1",
     "gulp": "github:gulpjs/gulp#4.0",
     "helmet": "^1.3.0",
     "jquery": "^3.0.0",
@@ -53,6 +53,7 @@
     "babel-loader": "^6.2.4",
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
+    "bootstrap-sass": "^3.3.7",
     "css-loader": "^0.23.1",
     "del": "^2.2.0",
     "es6-shim": "^0.35.1",

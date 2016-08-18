@@ -4,18 +4,19 @@
 const path = require('path');
 const webpack = require('webpack');
 const envConfig = require('./config.json')[process.env.NODE_ENV];
+console.log('envConfig:', envConfig);
 
 module.exports = {
   cache: true,
   devtool: 'cheap-module-source-map',
   entry: {
     bundle: [
-      './front-end/typescript/main.ts'
+      './front-end/typescript/main.ts',
     ],
     vendor: [
       './front-end/typescript/polyfills.browser.ts',
-      './front-end/typescript/vendor.ts'
-    ]
+      './front-end/typescript/vendor.ts',
+    ],
   },
 
   output: {
@@ -44,9 +45,13 @@ module.exports = {
 
   plugins: [
     new webpack.DefinePlugin({
-      '__env__': JSON.stringify(process.env.NODE_ENV),
-      '__apiHostName__': JSON.stringify( envConfig.api.host ),
-      '__apiPort__': JSON.stringify( envConfig.api.port )
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        'DOMAIN': JSON.stringify((()=> {
+          const host = envConfig.api.port !== '' ? (':' + envConfig.api.port) : '';
+          return `${envConfig.api.host}${host}`;
+        })()),
+      },
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',

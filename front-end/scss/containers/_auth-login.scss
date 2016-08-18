@@ -1,0 +1,26 @@
+.container-auth-login {
+  position: relative;
+  .b-login-frame{
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+    min-width: 350px;
+    max-width: 550px;
+    label, input {
+      position: relative;
+      float: left;
+    }
+    label {
+      width:30%;
+      padding: 0 15px;
+      text-align: right;
+    }
+    input {
+      width: 70%;
+    }
+    .e-lf-submit{
+      position: relative;
+      left: 30%;
+    }
+  }
+}

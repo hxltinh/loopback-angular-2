@@ -1,13 +1,13 @@
 {
   "development": {
     "api": {
-      "host": "http://0.0.0.0",
+      "host": "localhost",
       "port": "4000"
     }
   },
   "production": {
     "api": {
-      "host": "sone-website",
+      "host": "tinh.hypervm.io",
       "port": ""
     }
   }

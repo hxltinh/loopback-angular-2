@@ -14,7 +14,7 @@ module.exports = (gulp, devCb) => {
     wbSeverIns.listen(devConf.envConfig.api.port, 'localhost', (err) => {
       if (err) { throw new gutil.PluginError('webpack-dev-server', err); }
       console.log(chalk.red('------------------ START LOG: FRONT END ------------------'));
-      console.log(chalk.blue.bgWhite.bold(
+      console.log(chalk.magenta.bgBlack.bold(
         '[webpack-dev-server]',
         `http://localhost:${devConf.envConfig.api.port}`
       ));

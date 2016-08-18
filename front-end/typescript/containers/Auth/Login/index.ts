@@ -19,7 +19,7 @@ export default class Login {
   login: LoginInterface = {
     email: "",
     password: ""
-  };
+  }; 
 
   onSubmit(loginForm) {
     const { email, password } = this.login;

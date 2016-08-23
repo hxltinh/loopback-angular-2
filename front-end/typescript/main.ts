@@ -16,5 +16,5 @@ import Routes from "./routes";
 process.env.NODE_ENV === "production" &&  enableProdMode();
 
 bootstrap(MainApp, [Routes, disableDeprecatedForms(), provideForms()]);
-console.log('alo');
+
 // Header Auth Key: Authorization

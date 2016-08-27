@@ -20,9 +20,45 @@
       "type": "date",
       "default": null
     },
+    "firstName": {
+      "type": "string",
+      "default": ""
+    },
+    "lastName": {
+      "type": "string",
+      "default": ""
+    },
+    "phoneNumber": {
+      "type": "string",
+      "default": ""
+    },
+    "address": {
+      "type": "string",
+      "default": ""
+    },
+    "City": {
+      "type": "string",
+      "default": ""
+    },
+    "ZipCode": {
+      "type": "Number",
+      "default": 0
+    },
+    "Country": {
+      "type": "string",
+      "default": ""
+    },
+    "LoginSuccessCount": {
+      "type": "Number",
+      "default": 0
+    },
+    "LoginFailCount": {
+      "type": "Number",
+      "default": 0
+    },
     "createdDate": {
-      "type": "date",
-      "default": null
+      "type": "string",
+      "default": ""
     },
     "updatedDate": {
       "type": "string",

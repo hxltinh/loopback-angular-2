@@ -8,17 +8,29 @@ class DumpData {
   constructor(app, config) {
     this.app = app;
     this.config = config;
+    this.modelsArr = ['user', 'Role', 'ACL', 'RoleMapping', 'AccessToken'];
   }
 
-  findAdmin() {
-    const User = this.app.models.user;
-    const {email} = this.config.defaultUser;
+  // findAdmin() {
+  //   const User = this.app.models.user;
+  //   const {email} = this.config.defaultUser;
+  //   return new Promise((resolve, reject) => {
+  //     User.findOne({where: {email}}, (err, user) => {
+  //       if (err) { return reject(err); }
+  //       return resolve(user);
+  //     });
+  //   });
+  // }
 
+  executeMigrate() {
     return new Promise((resolve, reject) => {
-      User.findOne({where: {email}}, (err, user) => {
+      const ds = this.app.datasources.postgres;
+      ds.automigrate(this.modelsArr, err => {
         if (err) { return reject(err); }
 
-        return resolve(user);
+        // this.createAdmin().then(admin => {
+        //   this.createRole('user', admin.id).then(result => resolve(result));
+        // });
       });
     });
   }
@@ -42,7 +54,6 @@ class DumpData {
     return new Promise((resolve, reject) => {
       Role.create({name}, (err, role) => {
         if (err) { return reject(err); }
-        console.log('role:', role);
         role.principals.create(
           {principalType: RoleMapping.USER, principalId},
           (err, principal) => {

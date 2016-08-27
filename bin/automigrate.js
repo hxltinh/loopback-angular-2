@@ -3,37 +3,46 @@
  * migrate all data for development here
  */
 const path = require('path');
-const config = require('../server/config/dump-data');
-const DumpData = require('../server/services/dump-data');
+const pg = require('pg');
 
-const app = require(path.resolve(__dirname, '../server/server'));
-const ds = app.datasources.postgres;
+const loopback = require('loopback');
+const boot = require('loopback-boot');
 
-ds.automigrate('user', err => {
-  if (err) throw err;
+const DumpDatabase = require('../server/services/dump.database');
+const DumpData = require('../server/services/dump.data');
+const dumpDataConf = require('../server/config/dump.data.conf');
 
-  const dumpDataServ = new DumpData(app, config);
+const dumpDB = new DumpDatabase({
+  user: 'luffy',
+  password: 'superman',
+  database: 'luffydb',
+  port: 5432, //env var: PGPORT
+  max: 10, // max number of clients in the pool
+  idleTimeoutMillis: 10000, // how long a client is allowed to remain idle before being closed
+  databaseDefault: 'template1',
 
-  return dumpDataServ.createAdmin()
-    .then(admin => {
-      if (!admin) { return false; }
-      return new Promise((resolve, reject) => {
-        ds.automigrate(['Role', 'ACL', 'RoleMapping', 'AccessToken'], err => {
-          if (err) { return reject(err); }
-          dumpDataServ.createRole('admin', admin.id)
-            .then(result => resolve(result));
-        });
-      });
-    })
-    .then(principal => {
-      ds.disconnect();
-      if (!principal) {
-        return console.log('==== admin is NOT created ====');
-      }
-      return console.log('==== admin is created ====');
-    })
-    .catch(err => {
-      ds.disconnect();
-      console.log('create built-in table fail:', err);
-    });
 });
+
+dumpDB.execute().then(() => {
+  console.log('refresh database success');
+  const app = loopback();
+  boot(app, path.resolve(__dirname, '../server'), err => {
+    if (err) throw err;
+
+    // const ds = app.datasources.postgres;
+    const dumpDataServ = new DumpData(app, dumpDataConf);
+    dumpDataServ.executeMigrate().then(result => console.log(result));
+  });
+});
+
+// https://github.com/brianc/node-postgres
+
+const dropDbSql = 'DROP DATABASE luffydb;';
+var configPg = {
+  'user': 'luffy',
+  'password': 'superman',
+  database: 'luffydb',
+  port: 5432, //env var: PGPORT
+  max: 10, // max number of clients in the pool
+  idleTimeoutMillis: 10000, // how long a client is allowed to remain idle before being closed
+};

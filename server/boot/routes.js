@@ -13,15 +13,20 @@ module.exports = server => {
   router
     .post('/api/login', (req, res) => {
       const {email, password} = req.body;
+      console.log('email:', email);
+      console.log('password:', password);
       authServ.login(email, password, authConfig.ttl)
-        .then(token => {
+        .then(token => {          
           return res.json({
             userId: token.userId,
             token: token.id,
             email,
           });
         })
-        .catch(() => res.status(401).json({'error': 'login fail'}));
+        .catch(err => {
+          console.log('err:', err);
+          res.status(401).json({'error': 'login fail'});
+        });
     });
 
   server.use(router);

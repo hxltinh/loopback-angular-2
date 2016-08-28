@@ -2,7 +2,15 @@ const _ = require('lodash');
 const async = require('async');
 const modelArr = require('../../config/dump-models/user');
 
-module.exports = function(app) {
+/*
+ * @Function: User Migration
+ * delete and recreate new database,
+ * grant database privileges to user
+ *
+ * @return: DumpDatabase Class
+ */
+
+module.exports = function UserMigrate(app) {
   return new Promise((resolve, reject) => {
     const Role = app.models.Role;
     const RoleMapping = app.models.RoleMapping;

@@ -23,8 +23,9 @@ const dumpDB = new DumpDatabase({
   database,
   port, //env var: PGPORT
   max: 10, // max number of clients in the pool
-  idleTimeoutMillis: 10000, // how long a client is allowed to remain idle before being closed
-  databaseDefault: 'template1',
+  idleTimeoutMillis: 10000, // how long a client is allowed to remain idle before being close:
+  userDefault: 'postgres',
+  databaseDefault: 'postgres',
 
 });
 

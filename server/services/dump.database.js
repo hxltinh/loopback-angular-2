@@ -1,6 +1,14 @@
 const pg = require('pg');
 const _ = require('lodash');
 
+/*
+ * @Class: DumpDatabase
+ * delete and recreate new database,
+ * grant database privileges to user
+ *
+ * @return: DumpDatabase Class
+ */
+
 class DumpDatabase {
 
   constructor(config) {
@@ -34,7 +42,10 @@ class DumpDatabase {
 
   sqlExecution(sql) {
     return new Promise((resolve, reject) => {
-      const config = _.assign({}, this.config, {database: this.config.databaseDefault});
+      const config = _.assign({}, this.config, {
+        user: this.config.userDefault,
+        database: this.config.databaseDefault,
+      });
       const client = new pg.Client(config);
       client.connect(err => {
         if (err) { return reject(err); };

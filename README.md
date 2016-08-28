@@ -24,7 +24,7 @@ $ typings install
 ## commands
 - $ npm run dev: development mode
 - $ npm run prod: build front end at production mode
-- $ npm run migrate:dev migrate data (your postgres should have user: postgres, db: postgres)
+- $ npm run migrate:dev migrate data (your postgres should have user: luffy, db: postgres)
 - $ npm run server:prod: runser at production
 
 ## Note for developer

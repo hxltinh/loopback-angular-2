@@ -13,7 +13,6 @@ class DumpDatabase {
 
   constructor(config) {
     this.config = config;
-
     // this.checkDbExist = `SELECT 1 FROM pg_database WHERE datname='${this.config.database}'`;
     this.dropDbIfExistSql = `DROP DATABASE IF EXISTS ${this.config.database}`;
     this.createDbSql = `CREATE DATABASE ${this.config.database}`;

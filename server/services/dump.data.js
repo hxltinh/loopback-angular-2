@@ -12,7 +12,6 @@ class DumpData {
     this.modelsArr = ['user', 'Role', 'ACL', 'RoleMapping', 'AccessToken'];
   }
 
-
   executeMigrate() {
     return new Promise((resolve, reject) => {
       const ds = this.app.datasources.postgres;
@@ -21,10 +20,12 @@ class DumpData {
 
         dumpUserDb(this.app).then(result => {
           console.log('migrate data success');
+          resolve(result);
           process.exit();
         })
         .catch(err => {
           console.log('migrate data fail');
+          reject(err);
           process.exit();
         });
       });

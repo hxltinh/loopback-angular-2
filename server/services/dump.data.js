@@ -1,3 +1,4 @@
+const dumpUserDb = require('./dump-models/user');
 /*
  * @Service: dump data
  * handle dump data actions
@@ -11,16 +12,6 @@ class DumpData {
     this.modelsArr = ['user', 'Role', 'ACL', 'RoleMapping', 'AccessToken'];
   }
 
-  // findAdmin() {
-  //   const User = this.app.models.user;
-  //   const {email} = this.config.defaultUser;
-  //   return new Promise((resolve, reject) => {
-  //     User.findOne({where: {email}}, (err, user) => {
-  //       if (err) { return reject(err); }
-  //       return resolve(user);
-  //     });
-  //   });
-  // }
 
   executeMigrate() {
     return new Promise((resolve, reject) => {
@@ -28,39 +19,14 @@ class DumpData {
       ds.automigrate(this.modelsArr, err => {
         if (err) { return reject(err); }
 
-        // this.createAdmin().then(admin => {
-        //   this.createRole('user', admin.id).then(result => resolve(result));
-        // });
-      });
-    });
-  }
-
-  createAdmin() {
-    const User = this.app.models.user;
-    const {defaultUser} = this.config;
-    return new Promise((resolve, reject) => {
-      User.create(defaultUser, (err, user) => {
-        if (err) { return reject(err); }
-
-        resolve(user);
-      });
-    });
-  }
-
-  createRole(name, principalId) {
-    const Role = this.app.models.Role;
-    const RoleMapping = this.app.models.RoleMapping;
-
-    return new Promise((resolve, reject) => {
-      Role.create({name}, (err, role) => {
-        if (err) { return reject(err); }
-        role.principals.create(
-          {principalType: RoleMapping.USER, principalId},
-          (err, principal) => {
-            if (err) { return reject(err); }
-
-            return resolve(principal);
-          });
+        dumpUserDb(this.app).then(result => {
+          console.log('migrate data success');
+          process.exit();
+        })
+        .catch(err => {
+          console.log('migrate data fail');
+          process.exit();
+        });
       });
     });
   }

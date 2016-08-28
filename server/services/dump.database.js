@@ -14,7 +14,6 @@ class DumpDatabase {
   }
 
   execute() {
-    console.log('config:', this.config);
     return this.dropIfDbExist()
       .then(() => this.createDb())
       .then(() => this.grantPrivileges())
